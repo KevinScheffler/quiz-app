@@ -46,6 +46,10 @@
   .show-active {
     display: block;
   }
+
+  .container-4 {
+    text-align: center;
+  }
   </style>
 </head>
 <body>
@@ -55,19 +59,19 @@
       <h4>Which of the following is not a real ecommerce platform?</h4>
       <div class="answers">
         <div class="radio">
-          <input type="radio" name="group1" id="radio-1">
+          <input type="radio" id="radioOption1" name="radioGroup" id="radio-1-a">
           <label for="shopify">Shopify</label>
         </div>
           <div class="radio">
-            <input type="radio" name="group1" id="radio-2">
+            <input type="radio" id="radioOption2" name="radioGroup" id="radio-2-a">
             <label for="woocommerce">WooCommerce</label>
           </div>
           <div class="radio">
-            <input type="radio" name="group1" id="radio-3">
+            <input type="radio" id="radioOption3" name="radioGroup" id="radio-3-a">
             <label for="shopcommerce">ShopCommerce</label>
           </div>
           <div class="radio">
-            <input type="radio" name="group1" id="radio-4">
+            <input type="radio" id="radioOption4" name="radioGroup" id="radio-4-a">
             <label for="bigcommerce">BigCommerce</label>
           </div>
       </div>
@@ -81,27 +85,27 @@
       <h4>If Shopify is so good, why are Shopify developers necessary?</h4>
       <div class="answers">
         <div class="radio">
-          <input type="radio" name="group2" id="radio-1">
+          <input type="radio" id="radioOption1" name="radioGroup" id="radio-1-b">
           <label for="answer-1">
             To save time on things like store setups and migrations
           </label>
         </div>
           <div class="radio">
-            <input type="radio" name="group2" id="radio-2">
+            <input type="radio" id="radioOption2" name="radioGroup" id="radio-2-b">
             <label for="answer-2">
               To extend the limited design options and functionalities
               of themes with custom <span>code</span>
             </label>
           </div>
           <div class="radio">
-            <input type="radio" name="group2" id="radio-3">
+            <input type="radio" id="radioOption3" name="radioGroup" id="radio-3-b">
             <label for="answer-3">
               To provide support with a deep
                understanding of how the platform works and what <span>its limitations are</span>
             </label>
           </div>
           <div class="radio">
-            <input type="radio" name="group2" id="radio-4">
+            <input type="radio" id="radioOption4" name="radioGroup" id="radio-4-b">
             <label for="answer-4">
               All the above
             </label>
@@ -117,25 +121,25 @@
       <h4>Which of the following is true about Shopify developers?</h4>
       <div class="answers">
         <div class="radio">
-          <input type="radio" name="group3" id="radio-1">
+          <input type="radio" id="radioOption1" name="radioGroup" id="radio-1-c">
           <label for="answer-1">
             They are paid extremely well
           </label>
         </div>
           <div class="radio">
-            <input type="radio" name="group3" id="radio-2">
+            <input type="radio" id="radioOption2" name="radioGroup" id="radio-2-c">
             <label for="answer-2">
               There is a high demand for them
             </label>
           </div>
           <div class="radio">
-            <input type="radio" name="group3" id="radio-3">
+            <input type="radio" id="radioOption3" name="radioGroup" id="radio-3-c">
             <label for="answer-3">
               They need to know web development, the platform itself, and the liquid template <span>language</span>
             </label>
           </div>
           <div class="radio">
-            <input type="radio" name="group3" id="radio-4">
+            <input type="radio" id="radioOption4" name="radioGroup" id="radio-4-c">
             <label for="answer-4">
               All the above
             </label>
@@ -143,9 +147,12 @@
       </div>
       <button id="next3">Next ></button>
     </div>
+  </div>  
+  <div class="container container-4">
+    <h1>Score</h1>
+    <p id="score"></p>
   </div>
-
-
+</body>
 <script>
   let activeQuestion = 1;
 
@@ -158,6 +165,7 @@
     const container1 = document.querySelector('.container-1');
     const container2 = document.querySelector('.container-2');
     const container3 = document.querySelector('.container-3');
+    const container4 = document.querySelector('.container-4');
 
     // remove .show-active 
     if (activeQuestion === 1) {
@@ -168,24 +176,66 @@
       container3.classList.add('show-active');
     } else if (activeQuestion === 3) {
       container3.classList.remove('show-active');
-      // Optionally, you can reset to the first question after the third one.
-      // container1.classList.add('show-active');
-      // activeQuestion = 0;
+      container4.classList.add('show-active');
+      activeQuestion = 0;
     }
 
     activeQuestion++;
   }
 
+
+  var radioValues = [];
+ 
+  function getRadioValues() {
+  var radioButtons = document.getElementsByName('radioGroup');
+
+  // Loop through the radio buttons to find the selected one
+  for (var i = 0; i < radioButtons.length; i++) {
+    if (radioButtons[i].checked) {
+      radioValues.push(radioButtons[i].id); // Use .value instead of the entire element
+    }
+  }
+}
+
+
+  function getScore() {
+  const correctAnswers = ['radioOption3', 'radioOption4', 'radioOption4'];
+  let counter = 0;
+  
+  for (let i = 0; i < correctAnswers.length; i++) {
+    if (radioValues[i] === correctAnswers[i]) {
+      counter++;
+    }
+  }
+  const paragraph = document.getElementById("score");
+  paragraph.textContent = `You answered ${counter} out of 3 correctly!`;
+}
+  
+
+
+
+
+
+
+
+
+
+
+
   next1.addEventListener('click', function() {
     setNewActive();
+    getRadioValues();
   });       
 
   next2.addEventListener('click', function() {
     setNewActive();
+    getRadioValues();
   });    
   
   next3.addEventListener('click', function() {
    setNewActive();
+   getRadioValues();
+   getScore();
   });       
 </script>
 </body>
