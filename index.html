@@ -4,11 +4,198 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz App</title>
+  <style>
+    .questions-container {
+      width: 60%;
+      height: 500px;
+      border: solid black 2px;
+      margin: 0 auto;
+      margin-bottom: 50px;
+      display: none;
+    }
+    .show-active {
+      display: block;
+    }
+    .asnwers {
+      width: 90%;
+      background-color: lightgrey;
+    }
+    .answers label {
+      display: flex;
+      align-items: center;
+      background-color: lightgray;
+      margin-bottom: 2px;
+    }
+
+    .answers input {
+      margin-right: 10px;
+    }
+    .btn {
+      height: 40px;
+      width: 85px;
+      border: none;
+      color: white;
+      background-color: green;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-  
+  <div class="questions-container show-active">
+    <h1>eCommerce Quiz</h1>
+    <h2 class="questionIndex"></h2>
+      <p class="question">What does CSS stand for?</p>
+      <div class="answers">
+        <label>
+          <input type="radio" name="q1" value="1">
+          <p class="q1Answers"></p>
+        </label>
+        <label>
+          <input type="radio" name="q1" value="2">
+          <p class="q1Answers"></p>
+        </label>
+        <label>
+          <input type="radio" name="q1" value="3">
+          <p class="q1Answers"></p>
+        </label>
+          <label>
+            <input type="radio" name="q1" value="4">
+            <p class="q1Answers"></p>
+          </label>
+          <button class="btn">Next ˃</button>
+      </div>
+  </div>
+  <div class="questions-container">
+    <h1>eCommerce Quiz</h1>
+    <h2 class="questionIndex"></h2>
+    <p class="question">What does CSS stand for?</p>
+    <div class="answers">
+      <label>
+        <input type="radio" name="q2" value="1">
+        <p class="q2Answers"></p>
+      </label>
+      <label>
+        <input type="radio" name="q2" value="2">
+        <p class="q2Answers"></p>
+      </label>
+      <label>
+        <input type="radio" name="q2" value="3">
+        <p class="q2Answers"></p>
+      </label>
+        <label>
+          <input type="radio" name="q2" value="4">
+          <p class="q2Answers"></p>
+        </label>
+        <button class="btn">Next ˃</button>
+    </div>
+  </div>
+  <div class="questions-container">
+    <h1>eCommerce Quiz</h1>
+    <h2 class="questionIndex"></h2>
+    <p class="question">What does CSS stand for</p>
+    <div class="answers">
+      <label>
+        <input type="radio" name="q3" value="1">
+        <p class="q3Answers"></p>
+      </label>
+      <label>
+        <input type="radio" name="q3" value="2">
+        <p class="q3Answers"></p>
+      </label>
+      <label>
+        <input type="radio" name="q3" value="3">
+        <p class="q3Answers"></p>
+      </label>
+        <label>
+          <input type="radio" name="q3" value="4">
+          <p class="q3Answers"></p>
+        </label>
+        <button class="btn">Next ˃</button>
+    </div>
+  </div>
 </body>
 <script>
-  
+  const questionData = {
+    questionIndex: 1,
+    totalQuestions: 3,
+    questions: [
+      'Which of the following is not a real eCommerce platform?',
+      'If Shopify is so good, why are Shopify developers necessary?',
+      'Which of the following is true about shopify developers?'
+    ],
+    q1Answers: [
+      'Shopify',
+      'WooCommerce',
+      'ShopCommerce',
+      'BigCommerce'
+    ],
+    q2Answers: [
+      'To save time on things like store setups and migrations',
+      'To extend the limited design options and functionalities of themes with custom code',
+      'To provide support with a deep understanding of how the platform works and what its limitations are',
+      'All of the above'
+    ],
+    q3Answers: [
+      'They are paid extremely well',
+      'There is a high demand for them',
+      'They need to know web development, the platform itself, and the liquid template language',
+      'All of the above'
+    ]
+  };
+
+  let questionNumber = document.getElementsByClassName('questionIndex');
+
+  for (let i = 0; i < questionData.totalQuestions; i++) {
+    questionNumber[i].textContent = `Question ${questionData.questionIndex} of ${questionData.totalQuestions}`;
+    questionData.questionIndex++;
+  }
+
+  let question = document.getElementsByClassName('question');
+
+  for (let i = 0; i < questionData.totalQuestions; i++) {
+    question[i].textContent = questionData.questions[i];
+  }
+
+  let answersQ1 = document.getElementsByClassName('q1Answers');
+
+  for (let i = 0; i < questionData.q1Answers.length; i++) {
+    answersQ1[i].textContent = questionData.q1Answers[i];
+  }
+
+  let answersQ2 = document.getElementsByClassName('q2Answers');
+
+for (let i = 0; i < questionData.q2Answers.length; i++) {
+  answersQ2[i].textContent = questionData.q2Answers[i];
+}
+
+let answersQ3 = document.getElementsByClassName('q3Answers');
+
+for (let i = 0; i < questionData.q3Answers.length; i++) {
+  answersQ3[i].textContent = questionData.q3Answers[i];
+}
+
+let containers = document.getElementsByClassName('questions-container');
+
+function setNewActive() {
+  if (containers[0].classList.contains('show-active')) {
+    containers[0].classList.remove('show-active');
+    containers[1].classList.add('show-active');
+  } else if (containers[1].classList.contains('show-active')) {
+    containers[1].classList.remove('show-active');
+    containers[2].classList.add('show-active');
+  } else if (containers[2].classList.contains('show-active')) {
+    containers[2].classList.remove('show-active');
+  }
+}
+
+
+let buttons = document.getElementsByClassName('btn');
+
+for (button of buttons) {
+  button.addEventListener('click', function() {
+  setNewActive();
+});
+}
+
 </script>
 </html>
