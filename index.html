@@ -5,238 +5,235 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz App</title>
   <style>
-
-    .container {
-      width: 80%;
-      height: 50%;
-      border: 1px solid grey;
+    .questions-container {
+      width: 60%;
+      height: 500px;
+      border: solid black 2px;
       margin: 0 auto;
-      margin-bottom: 20px;
+      margin-bottom: 50px;
       display: none;
     }
-
-    .answers {
+    .show-active {
+      display: block;
+    }
+    .asnwers {
+      width: 90%;
+      background-color: lightgrey;
+    }
+    .answers label {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      background-color: lightgray;
+      margin-bottom: 2px;
     }
 
-  .radio {
-    background-color: #f1f1f1;
-    height: 50px;
-    margin-bottom: 5px;
-    font-size: 16px;
-  }
-
-  button {
-    height: 50px;
-    width: 100px;
-    background-color: green;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    margin-left: 10px;
-  }
-
-  span {
-    margin-left: 25px;
-  }
-
-  .show-active {
-    display: block;
-  }
-
-  .container-4 {
-    text-align: center;
-  }
+    .answers input {
+      margin-right: 10px;
+    }
+    .btn {
+      height: 40px;
+      width: 85px;
+      border: none;
+      color: white;
+      background-color: green;
+      margin-top: 10px;
+    }
+    .score-container {
+      display: none;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
-  <div class="container container-1 show-active">
-    <div class="question-1">
-      <h1>Ecommerce Quiz</h1>
-      <h4>Which of the following is not a real ecommerce platform?</h4>
+  <div class="questions-container show-active">
+    <h1>eCommerce Quiz</h1>
+    <h2 class="questionIndex"></h2>
+      <p class="question">What does CSS stand for?</p>
       <div class="answers">
-        <div class="radio">
-          <input type="radio" id="radioOption1" name="radioGroup" id="radio-1-a">
-          <label for="shopify">Shopify</label>
-        </div>
-          <div class="radio">
-            <input type="radio" id="radioOption2" name="radioGroup" id="radio-2-a">
-            <label for="woocommerce">WooCommerce</label>
-          </div>
-          <div class="radio">
-            <input type="radio" id="radioOption3" name="radioGroup" id="radio-3-a">
-            <label for="shopcommerce">ShopCommerce</label>
-          </div>
-          <div class="radio">
-            <input type="radio" id="radioOption4" name="radioGroup" id="radio-4-a">
-            <label for="bigcommerce">BigCommerce</label>
-          </div>
+        <label>
+          <input type="radio" name="answer" value="1">
+          <p class="q1Answers"></p>
+        </label>
+        <label>
+          <input type="radio" name="answer" value="2">
+          <p class="q1Answers"></p>
+        </label>
+        <label>
+          <input type="radio" name="answer" value="3">
+          <p class="q1Answers"></p>
+        </label>
+          <label>
+            <input type="radio" name="answer" value="4">
+            <p class="q1Answers"></p>
+          </label>
+          <button class="btn">Next ˃</button>
       </div>
-      <button id="next1">Next ></button>
+  </div>
+  <div class="questions-container">
+    <h1>eCommerce Quiz</h1>
+    <h2 class="questionIndex"></h2>
+    <p class="question">What does CSS stand for?</p>
+    <div class="answers">
+      <label>
+        <input type="radio" name="answer" value="1">
+        <p class="q2Answers"></p>
+      </label>
+      <label>
+        <input type="radio" name="answer" value="2">
+        <p class="q2Answers"></p>
+      </label>
+      <label>
+        <input type="radio" name="answer" value="3">
+        <p class="q2Answers"></p>
+      </label>
+        <label>
+          <input type="radio" name="answer" value="4">
+          <p class="q2Answers"></p>
+        </label>
+        <button class="btn">Next ˃</button>
     </div>
   </div>
-
-  <div class="container container-2">
-    <div class="question-2">
-      <h1>Ecommerce Quiz</h1>
-      <h4>If Shopify is so good, why are Shopify developers necessary?</h4>
-      <div class="answers">
-        <div class="radio">
-          <input type="radio" id="radioOption1" name="radioGroup" id="radio-1-b">
-          <label for="answer-1">
-            To save time on things like store setups and migrations
-          </label>
-        </div>
-          <div class="radio">
-            <input type="radio" id="radioOption2" name="radioGroup" id="radio-2-b">
-            <label for="answer-2">
-              To extend the limited design options and functionalities
-              of themes with custom <span>code</span>
-            </label>
-          </div>
-          <div class="radio">
-            <input type="radio" id="radioOption3" name="radioGroup" id="radio-3-b">
-            <label for="answer-3">
-              To provide support with a deep
-               understanding of how the platform works and what <span>its limitations are</span>
-            </label>
-          </div>
-          <div class="radio">
-            <input type="radio" id="radioOption4" name="radioGroup" id="radio-4-b">
-            <label for="answer-4">
-              All the above
-            </label>
-          </div>
-      </div>
-      <button id="next2">Next ></button>
+  <div class="questions-container">
+    <h1>eCommerce Quiz</h1>
+    <h2 class="questionIndex"></h2>
+    <p class="question">What does CSS stand for</p>
+    <div class="answers">
+      <label>
+        <input type="radio" name="answer" value="1">
+        <p class="q3Answers"></p>
+      </label>
+      <label>
+        <input type="radio" name="answer" value="2">
+        <p class="q3Answers"></p>
+      </label>
+      <label>
+        <input type="radio" name="answer" value="3">
+        <p class="q3Answers"></p>
+      </label>
+        <label>
+          <input type="radio" name="answer" value="4">
+          <p class="q3Answers"></p>
+        </label>
+        <button class="btn">Next ˃</button>
     </div>
   </div>
-
-  <div class="container container-3">
-    <div class="question-3">
-      <h1>Ecommerce Quiz</h1>
-      <h4>Which of the following is true about Shopify developers?</h4>
-      <div class="answers">
-        <div class="radio">
-          <input type="radio" id="radioOption1" name="radioGroup" id="radio-1-c">
-          <label for="answer-1">
-            They are paid extremely well
-          </label>
-        </div>
-          <div class="radio">
-            <input type="radio" id="radioOption2" name="radioGroup" id="radio-2-c">
-            <label for="answer-2">
-              There is a high demand for them
-            </label>
-          </div>
-          <div class="radio">
-            <input type="radio" id="radioOption3" name="radioGroup" id="radio-3-c">
-            <label for="answer-3">
-              They need to know web development, the platform itself, and the liquid template <span>language</span>
-            </label>
-          </div>
-          <div class="radio">
-            <input type="radio" id="radioOption4" name="radioGroup" id="radio-4-c">
-            <label for="answer-4">
-              All the above
-            </label>
-          </div>
-      </div>
-      <button id="next3">Next ></button>
-    </div>
-  </div>  
-  <div class="container container-4">
-    <h1>Score</h1>
-    <p id="score"></p>
+  <div class="score-container">
+    <h1 id="score"></h1>
   </div>
 </body>
 <script>
-  let activeQuestion = 1;
+  const questionData = {
+    questionIndex: 1,
+    totalQuestions: 3,
+    questions: [
+      'Which of the following is not a real eCommerce platform?',
+      'If Shopify is so good, why are Shopify developers necessary?',
+      'Which of the following is true about shopify developers?'
+    ],
+    q1Answers: [
+      'Shopify',
+      'WooCommerce',
+      'ShopCommerce',
+      'BigCommerce'
+    ],
+    q2Answers: [
+      'To save time on things like store setups and migrations',
+      'To extend the limited design options and functionalities of themes with custom code',
+      'To provide support with a deep understanding of how the platform works and what its limitations are',
+      'All of the above'
+    ],
+    q3Answers: [
+      'They are paid extremely well',
+      'There is a high demand for them',
+      'They need to know web development, the platform itself, and the liquid template language',
+      'All of the above'
+    ]
+  };
 
-  let next1 = document.getElementById("next1");
-  let next2 = document.getElementById("next2");
-  let next3 = document.getElementById("next3");
+  
 
-  function setNewActive () {
-     // select containers
-    const container1 = document.querySelector('.container-1');
-    const container2 = document.querySelector('.container-2');
-    const container3 = document.querySelector('.container-3');
-    const container4 = document.querySelector('.container-4');
+  let question = document.getElementsByClassName('question');
 
-    // remove .show-active 
-    if (activeQuestion === 1) {
-      container1.classList.remove('show-active');
-      container2.classList.add('show-active');
-    } else if (activeQuestion === 2) {
-      container2.classList.remove('show-active');
-      container3.classList.add('show-active');
-    } else if (activeQuestion === 3) {
-      container3.classList.remove('show-active');
-      container4.classList.add('show-active');
-      activeQuestion = 0;
-    }
-
-    activeQuestion++;
+  for (let i = 0; i < questionData.totalQuestions; i++) {
+    question[i].textContent = questionData.questions[i];
   }
 
+  let answersQ1 = document.getElementsByClassName('q1Answers');
 
-  var radioValues = [];
- 
-  function getRadioValues() {
-  var radioButtons = document.getElementsByName('radioGroup');
+  for (let i = 0; i < questionData.q1Answers.length; i++) {
+    answersQ1[i].textContent = questionData.q1Answers[i];
+  }
 
-  // Loop through the radio buttons to find the selected one
-  for (var i = 0; i < radioButtons.length; i++) {
-    if (radioButtons[i].checked) {
-      radioValues.push(radioButtons[i].id); // Use .value instead of the entire element
-    }
+  let answersQ2 = document.getElementsByClassName('q2Answers');
+
+for (let i = 0; i < questionData.q2Answers.length; i++) {
+  answersQ2[i].textContent = questionData.q2Answers[i];
+}
+
+let answersQ3 = document.getElementsByClassName('q3Answers');
+
+for (let i = 0; i < questionData.q3Answers.length; i++) {
+  answersQ3[i].textContent = questionData.q3Answers[i];
+}
+
+let containers = document.getElementsByClassName('questions-container');
+
+let questionNumber = document.getElementsByClassName('questionIndex');
+for (let i = 0; i < questionData.totalQuestions; i++) {
+  questionNumber[i].textContent = `Question ${questionData.questionIndex} of ${questionData.totalQuestions}`;
+  questionData.questionIndex++;
+}
+
+let scoreContainer = document.getElementsByClassName('score-container')[0];
+
+
+function setNewActive() {
+  if (containers[0].classList.contains('show-active')) {
+    containers[0].classList.remove('show-active');
+    containers[1].classList.add('show-active');
+  } else if (containers[1].classList.contains('show-active')) {
+    containers[1].classList.remove('show-active');
+    containers[2].classList.add('show-active');
+  } else if (containers[2].classList.contains('show-active')) {
+    containers[2].classList.remove('show-active');
+    scoreContainer.style.display = 'block';
   }
 }
 
 
-  function getScore() {
-  const correctAnswers = ['radioOption3', 'radioOption4', 'radioOption4'];
+let buttons = document.getElementsByClassName('btn');
+
+for (button of buttons) {
+  button.addEventListener('click', function() {
+    setNewActive();
+    getRadioValues();
+    getScore();
+    questionData.questionIndex.textContent = `Question ${questionData.questionIndex} of ${questionData.totalQuestions}`;
+  });
+}
+
+const radioValues = [];
+const radioElements = document.getElementsByName('answer');
+
+function getRadioValues () {
+  for (let i = 0; i < radioElements.length; i++) {
+    if (radioElements[i].checked) {
+      radioValues.push(radioElements[i].value);
+    }
+  }
+}
+
+function getScore() {
+  const correctAnswers = [3, 4, 4];
   let counter = 0;
-  
+
   for (let i = 0; i < correctAnswers.length; i++) {
-    if (radioValues[i] === correctAnswers[i]) {
-      counter++;
+    if (Number(radioValues[i]) === correctAnswers[i]) {
+      counter++
     }
+   }
+   const score = document.getElementById('score');
+   score.textContent = `You answered ${counter} out of ${questionData.totalQuestions} correctly`;
   }
-  const paragraph = document.getElementById("score");
-  paragraph.textContent = `You answered ${counter} out of 3 correctly!`;
-}
-  
-
-
-
-
-
-
-
-
-
-
-
-  next1.addEventListener('click', function() {
-    setNewActive();
-    getRadioValues();
-  });       
-
-  next2.addEventListener('click', function() {
-    setNewActive();
-    getRadioValues();
-  });    
-  
-  next3.addEventListener('click', function() {
-   setNewActive();
-   getRadioValues();
-   getScore();
-  });       
 </script>
-</body>
 </html>
