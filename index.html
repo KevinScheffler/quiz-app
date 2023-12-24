@@ -38,6 +38,10 @@
       background-color: green;
       margin-top: 10px;
     }
+    .score-container {
+      display: none;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -47,19 +51,19 @@
       <p class="question">What does CSS stand for?</p>
       <div class="answers">
         <label>
-          <input type="radio" name="q1" value="1">
+          <input type="radio" name="answer" value="1">
           <p class="q1Answers"></p>
         </label>
         <label>
-          <input type="radio" name="q1" value="2">
+          <input type="radio" name="answer" value="2">
           <p class="q1Answers"></p>
         </label>
         <label>
-          <input type="radio" name="q1" value="3">
+          <input type="radio" name="answer" value="3">
           <p class="q1Answers"></p>
         </label>
           <label>
-            <input type="radio" name="q1" value="4">
+            <input type="radio" name="answer" value="4">
             <p class="q1Answers"></p>
           </label>
           <button class="btn">Next ˃</button>
@@ -71,19 +75,19 @@
     <p class="question">What does CSS stand for?</p>
     <div class="answers">
       <label>
-        <input type="radio" name="q2" value="1">
+        <input type="radio" name="answer" value="1">
         <p class="q2Answers"></p>
       </label>
       <label>
-        <input type="radio" name="q2" value="2">
+        <input type="radio" name="answer" value="2">
         <p class="q2Answers"></p>
       </label>
       <label>
-        <input type="radio" name="q2" value="3">
+        <input type="radio" name="answer" value="3">
         <p class="q2Answers"></p>
       </label>
         <label>
-          <input type="radio" name="q2" value="4">
+          <input type="radio" name="answer" value="4">
           <p class="q2Answers"></p>
         </label>
         <button class="btn">Next ˃</button>
@@ -95,23 +99,26 @@
     <p class="question">What does CSS stand for</p>
     <div class="answers">
       <label>
-        <input type="radio" name="q3" value="1">
+        <input type="radio" name="answer" value="1">
         <p class="q3Answers"></p>
       </label>
       <label>
-        <input type="radio" name="q3" value="2">
+        <input type="radio" name="answer" value="2">
         <p class="q3Answers"></p>
       </label>
       <label>
-        <input type="radio" name="q3" value="3">
+        <input type="radio" name="answer" value="3">
         <p class="q3Answers"></p>
       </label>
         <label>
-          <input type="radio" name="q3" value="4">
+          <input type="radio" name="answer" value="4">
           <p class="q3Answers"></p>
         </label>
         <button class="btn">Next ˃</button>
     </div>
+  </div>
+  <div class="score-container">
+    <h1 id="score"></h1>
   </div>
 </body>
 <script>
@@ -143,12 +150,7 @@
     ]
   };
 
-  let questionNumber = document.getElementsByClassName('questionIndex');
-
-  for (let i = 0; i < questionData.totalQuestions; i++) {
-    questionNumber[i].textContent = `Question ${questionData.questionIndex} of ${questionData.totalQuestions}`;
-    questionData.questionIndex++;
-  }
+  
 
   let question = document.getElementsByClassName('question');
 
@@ -176,6 +178,15 @@ for (let i = 0; i < questionData.q3Answers.length; i++) {
 
 let containers = document.getElementsByClassName('questions-container');
 
+let questionNumber = document.getElementsByClassName('questionIndex');
+for (let i = 0; i < questionData.totalQuestions; i++) {
+  questionNumber[i].textContent = `Question ${questionData.questionIndex} of ${questionData.totalQuestions}`;
+  questionData.questionIndex++;
+}
+
+let scoreContainer = document.getElementsByClassName('score-container')[0];
+
+
 function setNewActive() {
   if (containers[0].classList.contains('show-active')) {
     containers[0].classList.remove('show-active');
@@ -185,6 +196,7 @@ function setNewActive() {
     containers[2].classList.add('show-active');
   } else if (containers[2].classList.contains('show-active')) {
     containers[2].classList.remove('show-active');
+    scoreContainer.style.display = 'block';
   }
 }
 
@@ -193,9 +205,35 @@ let buttons = document.getElementsByClassName('btn');
 
 for (button of buttons) {
   button.addEventListener('click', function() {
-  setNewActive();
-});
+    setNewActive();
+    getRadioValues();
+    getScore();
+    questionData.questionIndex.textContent = `Question ${questionData.questionIndex} of ${questionData.totalQuestions}`;
+  });
 }
 
+const radioValues = [];
+const radioElements = document.getElementsByName('answer');
+
+function getRadioValues () {
+  for (let i = 0; i < radioElements.length; i++) {
+    if (radioElements[i].checked) {
+      radioValues.push(radioElements[i].value);
+    }
+  }
+}
+
+function getScore() {
+  const correctAnswers = [3, 4, 4];
+  let counter = 0;
+
+  for (let i = 0; i < correctAnswers.length; i++) {
+    if (Number(radioValues[i]) === correctAnswers[i]) {
+      counter++
+    }
+   }
+   const score = document.getElementById('score');
+   score.textContent = `You answered ${counter} out of ${questionData.totalQuestions} correctly`;
+  }
 </script>
 </html>
